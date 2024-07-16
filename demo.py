@@ -77,12 +77,12 @@ async def api_docs():
     }
     
 @app.get("/")
-async def generate_token(length):
+async def generate_token(length=40):
     """
     Endpoint to generate an API key.
     """
     characters = string.ascii_letters + string.digits
-    api_key = ''.join(random.choice(characters) for _ in range(int(length))
+    api_key = ''.join(random.choice(characters) for _ in range(length)
     with open("api_keys.txt", "a") as file:
         file.write(api_key + "\n")
     message = {
